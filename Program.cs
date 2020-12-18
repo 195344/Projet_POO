@@ -20,10 +20,10 @@ namespace projet_labo_cinfo
                 myNet.update();
                 myNet.displayStats();
                 myNet.displayMessages();
-                if(myNet.getDifferenceProductionConsumption() > 0){
+                if(myNet.getDifferenceProductionConsumption() > 0){//surproduction
                     myCC.setConsumption(3,myNet.getDifferenceProductionConsumption());
                 }
-                if(myNet.getDifferenceProductionConsumption() < 0){
+                if(myNet.getDifferenceProductionConsumption() < 0){//sousproduction
                     myCC.modProduction(1,-myNet.getDifferenceProductionConsumption());
                 }
                 System.Threading.Thread.Sleep(1000);
@@ -32,8 +32,8 @@ namespace projet_labo_cinfo
         }
 
         public static Network exampleNet(){
-            MarketSimulation france_market = new MarketSimulation();
-            WeatherSimulation france_weather = new WeatherSimulation(0,0);
+            SimpleMarketSimulation france_market = new SimpleMarketSimulation();
+            SimpleWeatherSimulation france_weather = new SimpleWeatherSimulation(0,0);
             GasPlant myGas = new GasPlant(1000,3,france_market);
             SolarPlant mySun = new SolarPlant(0,100,france_weather);
             BuyElectricity myBuy = new BuyElectricity(0,0,france_market);

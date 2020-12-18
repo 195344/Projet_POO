@@ -67,7 +67,7 @@ namespace WireNode{
     
     public class ConcentNode: Node
     {
-        public ConcentNode()//node or producer
+        public ConcentNode()
         {
             this.connetions = new List<Wire>();
 

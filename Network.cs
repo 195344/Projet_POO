@@ -7,17 +7,17 @@ using System.Collections.Generic;
 namespace Net
 {
     public class Network{
-        protected List<Consumer> consumers;
-        protected List<Producer> producers;
-        protected List<DistribNode> distribNodes;
-        protected List<ConcentNode> concentNodes;
-        protected List<Wire> wires;
-        protected double totalProduction;
-        protected double totalEmission;
-        protected double totalCost;
-        protected double totalConsumption;
-        protected double differenceProductionConsumption;
-        protected List<string> messages = new List<string>();
+        private List<Consumer> consumers;
+        private List<Producer> producers;
+        private List<DistribNode> distribNodes;
+        private List<ConcentNode> concentNodes;
+        private List<Wire> wires;
+        private double totalProduction;
+        private double totalEmission;
+        private double totalCost;
+        private double totalConsumption;
+        private double differenceProductionConsumption;
+        private List<string> messages = new List<string>();
 
         public Network(List<Consumer> consumers, List<Producer> producers, List<DistribNode> distribNodes, List<ConcentNode> concentNodes, List<Wire> wires){
             this.consumers = consumers;
@@ -109,7 +109,6 @@ namespace Net
         }
 
         private void writeMessages(){
-            messages.Clear();
             if(differenceProductionConsumption > 0){
                 messages.Add("Attention : surproduction de " + differenceProductionConsumption);
             }
@@ -141,6 +140,11 @@ namespace Net
             foreach (string str in messages){
                 Console.WriteLine(str);
             }
+            Console.WriteLine("");
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("");
+
+            messages.Clear();
         }
 
         public void displayStats(){
@@ -174,6 +178,7 @@ namespace Net
         }
 
         public List<string> getMessages(){
+            messages.Clear();
             return messages;
         }
 
