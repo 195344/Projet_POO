@@ -13,7 +13,6 @@ namespace projet_labo_cinfo
     {
         static void Main(string[] args)
         {   
-            
             Network myNet = exampleNet();
             ControlCenter myCC = new ControlCenter(myNet);
             //myCC.switchOff(1);
