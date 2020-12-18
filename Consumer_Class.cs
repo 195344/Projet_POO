@@ -55,4 +55,9 @@ namespace Cons
         public Dissipaters(double consumption) : base(consumption){}
     }
 
+    public class SellElectricity : Consumer
+    {
+        public SellElectricity(double consumption) : base(consumption){}
+    }
+
 }

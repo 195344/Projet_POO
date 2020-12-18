@@ -35,9 +35,8 @@ namespace Net
 
             differenceProductionConsumption = computeDifferenceProductionConsumption();
             
-            writeMessages();
-
             updateLine();
+            writeMessages();
         }
 
         public void updateLine(){
@@ -120,12 +119,38 @@ namespace Net
             if(totalProduction == 0){
                 messages.Add("Attention : BLACKOUT");
             }
+            //Erreur de sous et sur alimentation d'un consomateur
+            foreach (Consumer cons in consumers){
+                if(cons.getConsumption() > cons.getWire().getActivCurrent()){
+                    if(!(cons is Dissipaters||cons is SellElectricity)){
+                        messages.Add("Attention : sousalimentation du consomateur " + cons.getNumber());
+                    }
+                }
+                if(cons.getWire().getActivCurrent() > cons.getConsumption()){
+                    if(!(cons is Dissipaters||cons is SellElectricity)){
+                        messages.Add("Attention : suralimentation du consomateur " + cons.getNumber());
+                    }
+                }
+            }
         }
 
         public void displayMessages(){
+            Console.WriteLine("");
+            Console.WriteLine("Messages : ");
+            Console.WriteLine("");
             foreach (string str in messages){
                 Console.WriteLine(str);
             }
+        }
+
+        public void displayStats(){
+            Console.WriteLine("");
+            Console.WriteLine("Stats : ");
+            Console.WriteLine("");
+            Console.WriteLine("Production total :" + getTotalProduction());
+            Console.WriteLine("Cout total :" + getTotalCost());
+            Console.WriteLine("Emission total :" + getTotalEmission());
+            Console.WriteLine("Consomation total :" + getTotalConsumption());
         }
 
         public double getTotalProduction(){

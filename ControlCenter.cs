@@ -28,8 +28,10 @@ namespace ControlCenter_file
         public void switchOff(int x){
             for (int i = 0; i < network.getProducerList().Count ; i++) {
                 if(network.getProducerList()[i].getNumber()==x){
-                    var nuclearPlant = (NuclearPlant)network.getProducerList()[i];
-                    nuclearPlant.SwitchOff();
+                    if(network.getProducerList()[i] is NuclearPlant){
+                        var nuclearPlant = (NuclearPlant)network.getProducerList()[i];
+                        nuclearPlant.SwitchOff();
+                    }
                 }
             }
         }
@@ -37,8 +39,10 @@ namespace ControlCenter_file
         public void switchOn(int x){
             for (int i = 0; i < network.getProducerList().Count ; i++) {
                 if(network.getProducerList()[i].getNumber()==x){
-                    var nuclearPlant = (NuclearPlant)network.getProducerList()[i];
-                    nuclearPlant.SwitchOn();
+                    if(network.getProducerList()[i] is NuclearPlant){
+                        var nuclearPlant = (NuclearPlant)network.getProducerList()[i];
+                        nuclearPlant.SwitchOn();
+                    }
                 }
             }
         }
@@ -53,6 +57,21 @@ namespace ControlCenter_file
                     if(network.getProducerList()[i] is BuyElectricity){
                         var buyElectricity = (BuyElectricity)network.getProducerList()[i];
                         buyElectricity.setProduction(production);
+                    }
+                }
+            }
+        }
+
+        public void modProduction(int x, double difference){
+            for (int i = 0; i < network.getProducerList().Count ; i++) {
+                if(network.getProducerList()[i].getNumber()==x){
+                    if(network.getProducerList()[i] is GasPlant){
+                        var gasPlant = (GasPlant)network.getProducerList()[i];
+                        gasPlant.setProduction(gasPlant.getProduction() + difference);
+                    }
+                    if(network.getProducerList()[i] is BuyElectricity){
+                        var buyElectricity = (BuyElectricity)network.getProducerList()[i];
+                        buyElectricity.setProduction(buyElectricity.getProduction() + difference);
                     }
                 }
             }
