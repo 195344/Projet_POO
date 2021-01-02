@@ -43,7 +43,8 @@ Pour crée un réseau il faut :
 
 ----------------------------------
 
-![Screenshot](screenshot.png)
+![Screenshot](DiagrameDeSequence.png)
+![Screenshot](DiagrammeDeClasses.png)
 
 ----------------------------------
 
