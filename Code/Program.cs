@@ -26,6 +26,7 @@ namespace projet_labo_cinfo
                 if(myNet.getDifferenceProductionConsumption() < 0){//sousproduction
                     myCC.modProduction(1,-myNet.getDifferenceProductionConsumption());
                 }
+                //delay de 1 sec
                 System.Threading.Thread.Sleep(1000);
             }
             
