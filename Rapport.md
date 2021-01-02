@@ -1,3 +1,6 @@
+Matthias Léonard 20308
+Stanislas Baudin 195344
+
 Rapport Projet POO : Simulateur de réseaux électrique
 
 Langage de programmation : C# 
